@@ -5,6 +5,7 @@
  */
 package com.sixth.fodder.graphics;
 
+import com.sixth.fodder.graphics.atlasses.Building;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -19,7 +20,6 @@ import com.sixth.fodder.graphics.atlasses.*;
 
 public class CellActor extends Actor
 {
-    // TODO: make enums for atlases like for roadsAtlas
     private static final TextureAtlas backCellsAtlas = new TextureAtlas(Gdx.files.internal("assets/backCells/backCells.pack"));
     private static final TextureAtlas buildingsAtlas = new TextureAtlas(Gdx.files.internal("assets/buildings/buildings.pack"));
     private static final TextureAtlas roadsAtlas = new TextureAtlas(Gdx.files.internal("assets/roads/roads.pack"));
