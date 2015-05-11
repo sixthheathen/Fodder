@@ -1,0 +1,33 @@
+
+people.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+ManLeftLeg
+  rotate: false
+  xy: 2, 10
+  size: 2, 2
+  orig: 2, 2
+  offset: 0, 0
+  index: -1
+ManRightLeg
+  rotate: false
+  xy: 2, 6
+  size: 2, 2
+  orig: 2, 2
+  offset: 0, 0
+  index: -1
+WomanLeftLeg
+  rotate: false
+  xy: 6, 10
+  size: 2, 2
+  orig: 2, 2
+  offset: 0, 0
+  index: -1
+WomanRightLeg
+  rotate: false
+  xy: 2, 2
+  size: 2, 2
+  orig: 2, 2
+  offset: 0, 0
+  index: -1
