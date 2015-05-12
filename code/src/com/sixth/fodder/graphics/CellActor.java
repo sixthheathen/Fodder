@@ -68,4 +68,11 @@ public class CellActor extends Actor
     {
         return roadsAtlas;
     }
+    
+    
+
+    public void setTexture(TextureRegion texture)
+    {
+        this.texture = texture;
+    }                                 
 }
