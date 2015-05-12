@@ -31,21 +31,14 @@ public enum Road
     udlrRoad ("udlrRoad");
     
     private final TextureRegion texture;
-    private final String name;
 
     Road (String name)
     {
-        this.name = name;
         texture = CellActor.getRoadsAtlas().findRegion(name);
     }
 
     public TextureRegion getTexture() 
     {
         return texture;
-    }
-
-    public String getName() 
-    {
-        return name;
     }
 }

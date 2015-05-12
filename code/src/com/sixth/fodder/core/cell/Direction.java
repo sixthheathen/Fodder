@@ -15,7 +15,7 @@ public class Direction
     private Boolean exists;
     private Cell cell;
     
-    Direction (int id, Boolean exists)
+    Direction (Boolean exists)
     {
 //        this.id = id;
         this.exists = exists;

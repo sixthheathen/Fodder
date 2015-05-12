@@ -41,7 +41,7 @@ public class CellActor extends Actor
     
     public void setTexture(String name) 
     {
-        for (BackCell b : BackCell.values())
+        for (BackCells b : BackCells.values())
             if (name.equals(b.getName()))
                 this.texture = b.getTexture();
         for (Building b : Building.values())

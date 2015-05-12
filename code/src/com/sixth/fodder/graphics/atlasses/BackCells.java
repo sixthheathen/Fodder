@@ -12,26 +12,19 @@ import com.sixth.fodder.graphics.CellActor;
  *
  * @author sixth
  */
-public enum BackCell 
+public enum BackCells 
 {
     voidCell ("voidCell");
     
     private final TextureRegion texture;
-    private final String name;
 
-    BackCell (String name)
+    BackCells (String name)
     {
-        this.name = name;
         texture = CellActor.getBackCellsAtlas().findRegion(name);
     }
 
     public TextureRegion getTexture() 
     {
         return texture;
-    }
-
-    public String getName() 
-    {
-        return name;
     }
 }

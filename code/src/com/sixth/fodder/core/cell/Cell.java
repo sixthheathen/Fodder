@@ -14,11 +14,12 @@ import com.sixth.fodder.graphics.CellActor;
 public abstract class Cell 
 {
     private final static int sizeInPix = 64;
+    private final static int numOfCells = 64;
 
-//    private final Direction up;
-//    private final Direction down;
-//    private final Direction left;
-//    private final Direction right;
+    private final Direction up;
+    private final Direction down;
+    private final Direction left;
+    private final Direction right;
     
     private final int x;
     private final int y;
@@ -32,23 +33,45 @@ public abstract class Cell
         this.x = x;
         this.y = y;
         
-//        up = new Direction(0b1000, "u", (x != 0));
-//        down = new Direction (0b0100, "d", (x != (RoadGenerator.getNumOfCells() - 1)));
-//        left = new Direction (0b0010, "l", (y != 0));
-//        right = new Direction (0b0001, "r", (y != (RoadGenerator.getNumOfCells() - 1)));
-//        
+        up = new Direction(x != 0);
+        down = new Direction (x != (numOfCells - 1));
+        left = new Direction (y != 0);
+        right = new Direction (y != (numOfCells - 1));
+        
 //        building = null;
         
         actor = new CellActor();
         actor.setSize(sizeInPix, sizeInPix);
-//        actor.setPosition(y * sizeInPix, (RoadGenerator.getNumOfCells() - x - 1) * sizeInPix);
-//        actor.setTexture(composeName());
+        actor.setPosition(y * sizeInPix, (numOfCells - x - 1) * sizeInPix);
+        setTexture();
     }
     
     public abstract void setTexture();
     
+    // accessors
+    
     public CellActor getActor ()
     {
         return actor;
+    }
+
+    public Direction getUp()
+    {
+        return up;
+    }
+
+    public Direction getDown()
+    {
+        return down;
+    }
+
+    public Direction getLeft()
+    {
+        return left;
+    }
+
+    public Direction getRight()
+    {
+        return right;
     }
 }
