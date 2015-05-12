@@ -12,27 +12,20 @@ import com.sixth.fodder.graphics.CellActor;
  *
  * @author sixth
  */
-public enum Building 
+public enum Buildings 
 {
     house ("house"),
     cafe ("cafe");
     
     private final TextureRegion texture;
-    private final String name;
 
-    Building (String name)
+    Buildings (String name)
     {
-        this.name = name;
         texture = CellActor.getBuildingsAtlas().findRegion(name);
     }
 
     public TextureRegion getTexture() 
     {
         return texture;
-    }
-
-    public String getName() 
-    {
-        return name;
     }
 }

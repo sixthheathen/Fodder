@@ -5,6 +5,8 @@
  */
 package com.sixth.fodder.core.cell;
 
+import com.sixth.fodder.graphics.atlasses.BackCells;
+
 /**
  *
  * @author sixth
@@ -14,5 +16,11 @@ public class BackCell extends Cell
     BackCell (int x, int y)
     {
         super(x, y);
+    }
+    
+    @Override
+    public void setTexture ()
+    {
+        super.getActor().setTexture(BackCells.valueOf("voidCell").getTexture());
     }
 }

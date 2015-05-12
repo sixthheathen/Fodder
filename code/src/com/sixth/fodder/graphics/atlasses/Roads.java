@@ -12,7 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  *
  * @author sixth
  */
-public enum Road 
+public enum Roads 
 {
     uRoad ("uRoad"),
     dRoad ("dRoad"),
@@ -32,7 +32,7 @@ public enum Road
     
     private final TextureRegion texture;
 
-    Road (String name)
+    Roads (String name)
     {
         texture = CellActor.getRoadsAtlas().findRegion(name);
     }

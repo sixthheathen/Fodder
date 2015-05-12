@@ -16,15 +16,9 @@ public abstract class Cell
     private final static int sizeInPix = 64;
     private final static int numOfCells = 64;
 
-    private final Direction up;
-    private final Direction down;
-    private final Direction left;
-    private final Direction right;
-    
     private final int x;
     private final int y;
     
-//    private Building building;
     
     private final CellActor actor;
         
@@ -32,11 +26,6 @@ public abstract class Cell
     {
         this.x = x;
         this.y = y;
-        
-        up = new Direction(x != 0);
-        down = new Direction (x != (numOfCells - 1));
-        left = new Direction (y != 0);
-        right = new Direction (y != (numOfCells - 1));
         
 //        building = null;
         
@@ -55,23 +44,8 @@ public abstract class Cell
         return actor;
     }
 
-    public Direction getUp()
+    public static int getNumOfCells()
     {
-        return up;
-    }
-
-    public Direction getDown()
-    {
-        return down;
-    }
-
-    public Direction getLeft()
-    {
-        return left;
-    }
-
-    public Direction getRight()
-    {
-        return right;
+        return numOfCells;
     }
 }

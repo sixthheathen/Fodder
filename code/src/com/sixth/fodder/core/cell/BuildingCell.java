@@ -5,14 +5,24 @@
  */
 package com.sixth.fodder.core.cell;
 
+import com.sixth.fodder.core.buildings.Building;
+import com.sixth.fodder.graphics.atlasses.Buildings;
+
 /**
  *
  * @author sixth
  */
 public class BuildingCell extends Cell
 {
+    private Building building;
+
     BuildingCell (int x, int y)
     {
         super(x, y);
+    }
+    
+    public void setTexture ()
+    {
+        super.getActor().setTexture(Buildings.valueOf(building.getName()).getTexture());
     }
 }

@@ -5,7 +5,7 @@
  */
 package com.sixth.fodder.core.cell;
 
-import com.sixth.fodder.graphics.atlasses.Road;
+import com.sixth.fodder.graphics.atlasses.*;
 
 /**
  *
@@ -14,70 +14,81 @@ import com.sixth.fodder.graphics.atlasses.Road;
 public class RoadCell extends Cell
 
 {
+    private final Direction up;
+    private final Direction down;
+    private final Direction left;
+    private final Direction right;
+    
     RoadCell (int x, int y)
     {
         super(x, y);
+        
+        up = new Direction(x != 0);
+        down = new Direction (x != (super.getNumOfCells() - 1));
+        left = new Direction (y != 0);
+        right = new Direction (y != (super.getNumOfCells() - 1));
     }
     
+    @Override
     public void setTexture()
     {
-        if (super.getUp().exists())
-            if (super.getDown().exists())
-                if (super.getLeft().exists())
-                    if (super.getRight().exists())
-                        super.getActor().setTexture(Road.valueOf("udlrRoad").getTexture());
+        if (up.exists())
+            if (down.exists())
+                if (left.exists())
+                    if (right.exists())
+                        super.getActor().setTexture(Roads.valueOf("udlrRoad").getTexture());
                     else
-                        super.getActor().setTexture(Road.valueOf("udlRoad").getTexture());
+                        super.getActor().setTexture(Roads.valueOf("udlRoad").getTexture());
                 else 
                 {
-                    if (super.getRight().exists())
-                        super.getActor().setTexture(Road.valueOf("udrRoad").getTexture());
+                    if (right.exists())
+                        super.getActor().setTexture(Roads.valueOf("udrRoad").getTexture());
                     else 
-                        super.getActor().setTexture(Road.valueOf("udRoad").getTexture());
+                        super.getActor().setTexture(Roads.valueOf("udRoad").getTexture());
                 }
             else 
             {
-                if (super.getLeft().exists())
-                    if (super.getRight().exists())
-                        super.getActor().setTexture(Road.valueOf("ulrRoad").getTexture());
+                if (left.exists())
+                    if (right.exists())
+                        super.getActor().setTexture(Roads.valueOf("ulrRoad").getTexture());
                     else
-                        super.getActor().setTexture(Road.valueOf("ulRoad").getTexture());
+                        super.getActor().setTexture(Roads.valueOf("ulRoad").getTexture());
                 else 
                 {
-                    if (super.getRight().exists())
-                        super.getActor().setTexture(Road.valueOf("urRoad").getTexture());
+                    if (right.exists())
+                        super.getActor().setTexture(Roads.valueOf("urRoad").getTexture());
                     else 
-                        super.getActor().setTexture(Road.valueOf("uRoad").getTexture());
+                        super.getActor().setTexture(Roads.valueOf("uRoad").getTexture());
                 }
             }
         else
         {
-            if (super.getDown().exists())
-                if (super.getLeft().exists())
-                    if (super.getRight().exists())
-                        super.getActor().setTexture(Road.valueOf("dlrRoad").getTexture());
+            if (down.exists())
+                if (left.exists())
+                    if (right.exists())
+                        super.getActor().setTexture(Roads.valueOf("dlrRoad").getTexture());
                     else
-                        super.getActor().setTexture(Road.valueOf("dlRoad").getTexture());
+                        super.getActor().setTexture(Roads.valueOf("dlRoad").getTexture());
                 else 
                 {
-                    if (super.getRight().exists())
-                        super.getActor().setTexture(Road.valueOf("drRoad").getTexture());
+                    if (right.exists())
+                        super.getActor().setTexture(Roads.valueOf("drRoad").getTexture());
                     else 
-                        super.getActor().setTexture(Road.valueOf("dRoad").getTexture());
+                        super.getActor().setTexture(Roads.valueOf("dRoad").getTexture());
                 }
             else 
             {
-                if (super.getLeft().exists())
-                    if (super.getRight().exists())
-                        super.getActor().setTexture(Road.valueOf("lrRoad").getTexture());
+                if (left.exists())
+                    if (right.exists())
+                        super.getActor().setTexture(Roads.valueOf("lrRoad").getTexture());
                     else
-                        super.getActor().setTexture(Road.valueOf("lRoad").getTexture());
+                        super.getActor().setTexture(Roads.valueOf("lRoad").getTexture());
                 else 
                 {
-                    if (super.getRight().exists())
-                        super.getActor().setTexture(Road.valueOf("rRoad").getTexture());
+                    if (right.exists())
+                        super.getActor().setTexture(Roads.valueOf("rRoad").getTexture());
                     else 
-                        super.getActor().setTexture(BackCells.valueOf("voidCell".getTexture()));
+                        super.getActor().setTexture(BackCells.valueOf("voidCell").getTexture());
                 }
             }
         }
