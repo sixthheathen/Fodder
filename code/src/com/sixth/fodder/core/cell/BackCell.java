@@ -13,9 +13,10 @@ import com.sixth.fodder.graphics.atlasses.BackCells;
  */
 public class BackCell extends Cell
 {
-    BackCell (int x, int y)
+    public BackCell (int x, int y)
     {
         super(x, y);
+        setTexture();
     }
     
     @Override

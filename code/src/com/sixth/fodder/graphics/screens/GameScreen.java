@@ -10,8 +10,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.Scaling;
-import com.badlogic.gdx.utils.viewport.ScalingViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.sixth.fodder.core.buildings.Building;
+import com.sixth.fodder.graphics.CellActor;
 import com.sixth.fodder.graphics.Fodder;
 
 /**
@@ -24,7 +25,7 @@ public class GameScreen implements Screen
         private final Stage stage;
         private final OrthographicCamera camera;
         
-//        private final Building[] buildings;
+        private final Building[] buildings;
 //        private final RoadGenerator roadGen;
 //        private final Cell[][] cells;
 	
@@ -32,26 +33,20 @@ public class GameScreen implements Screen
         {
                 this.game = game;  
                 camera = new OrthographicCamera(RoadGenerator.getNumOfCells() * Cell.getSizeInPix(), 
-                        //RoadGenerator.getNumOfCells() * Cell.getSizeInPix());
-		//camera.setToOrtho(false);
-                        //, 
-                        //RoadGenerator.getNumOfCells() * Cell.getSizeInPix(),
-                        //RoadGenerator.getNumOfCells() * Cell.getSizeInPix());
-                viewport = new ScalingViewport(Scaling.fill, 
-                        RoadGenerator.getNumOfCells() * Cell.getSizeInPix(), 
-                        RoadGenerator.getNumOfCells() * Cell.getSizeInPix());
-                stage = new Stage(viewport, game.batch);
+                        
                 
-                houses = new House[3];
+                stage = new Stage(new ScreenViewport, game.batch);
+                
+                buildings = new Building[3];
                 for (int i = 0; i < 3; i++)
                 {
-                    houses[i] = new House(100);
+                    buildings[i] = new Building();
                 }
 
-                roadGen = new RoadGenerator();
-                roadGen.placeHouses(houses);
-                
-                cells = RoadGenerator.getCells();
+//                roadGen = new RoadGenerator();
+//                roadGen.placeBuildings(buildings);
+//                
+//                cells = RoadGenerator.getCells();
                 
                 for (int i = 0; i < RoadGenerator.getNumOfCells(); ++i)
                     for (int j = 0; j < RoadGenerator.getNumOfCells(); ++j)
@@ -61,8 +56,8 @@ public class GameScreen implements Screen
 	@Override
 	public void render(float delta) 
         {
-                //camera.update();
-                //game.batch.setProjectionMatrix(camera.combined);
+//                camera.update();
+//                game.batch.setProjectionMatrix(camera.combined);
                 
                 stage.draw();
                 stage.act(Gdx.graphics.getDeltaTime());

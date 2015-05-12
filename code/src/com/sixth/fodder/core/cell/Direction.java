@@ -5,6 +5,8 @@
  */
 package com.sixth.fodder.core.cell;
 
+import com.sixth.fodder.core.cell.Cell;
+
 /**
  *
  * @author sixth

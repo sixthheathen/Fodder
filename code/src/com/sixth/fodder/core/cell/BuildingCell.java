@@ -16,13 +16,19 @@ public class BuildingCell extends Cell
 {
     private Building building;
 
-    BuildingCell (int x, int y)
+    public BuildingCell (int x, int y)
     {
         super(x, y);
+        building = null;
     }
     
     public void setTexture ()
     {
         super.getActor().setTexture(Buildings.valueOf(building.getName()).getTexture());
+    }
+
+    public Boolean hasBuilding()
+    {
+        return (building != null);
     }
 }
