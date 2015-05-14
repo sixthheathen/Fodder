@@ -5,8 +5,6 @@
  */
 package com.sixth.fodder.core.cell;
 
-import com.sixth.fodder.core.cell.Cell;
-
 /**
  *
  * @author sixth
@@ -42,5 +40,10 @@ public class Direction
     public void setCell(Cell cell) 
     {
         this.cell = cell;
+    }
+
+    public Cell getCell()
+    {
+        return cell;
     }
 }

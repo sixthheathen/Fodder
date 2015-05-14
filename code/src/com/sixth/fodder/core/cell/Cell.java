@@ -5,6 +5,7 @@
  */
 package com.sixth.fodder.core.cell;
 
+import com.sixth.fodder.core.RoadGenerator;
 import com.sixth.fodder.graphics.CellActor;
 
 /**
@@ -14,7 +15,6 @@ import com.sixth.fodder.graphics.CellActor;
 public abstract class Cell 
 {
     private final static int sizeInPix = 64;
-    private final static int numOfCells = 64;
 
     private final int x;
     private final int y;
@@ -25,6 +25,8 @@ public abstract class Cell
     private final Direction right;
     
     private final CellActor actor;
+    
+    private Boolean checked;;
         
     public Cell(int x, int y)
     {
@@ -32,14 +34,13 @@ public abstract class Cell
         this.y = y;
         
         up = new Direction(x != 0);
-        down = new Direction(x != (numOfCells - 1));
+        down = new Direction(x != (RoadGenerator.getNumOfCells() - 1));
         left = new Direction(y != 0);
-        right = new Direction(y != (numOfCells - 1));
+        right = new Direction(y != (RoadGenerator.getNumOfCells() - 1));
         
         actor = new CellActor();
         actor.setSize(sizeInPix, sizeInPix);
-        actor.setPosition(y * sizeInPix, (numOfCells - x - 1) * sizeInPix);
-        setTexture();
+        actor.setPosition(y * sizeInPix, (RoadGenerator.getNumOfCells() - x - 1) * sizeInPix);
     }
     
     public abstract void setTexture();
@@ -50,10 +51,10 @@ public abstract class Cell
     {
         return actor;
     }
-
-    public static int getNumOfCells()
+    
+    public static int getSizeInPix()
     {
-        return numOfCells;
+        return sizeInPix;
     }
 
     public Direction getUp()

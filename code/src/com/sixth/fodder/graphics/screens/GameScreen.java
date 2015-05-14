@@ -8,10 +8,10 @@ package com.sixth.fodder.graphics.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.sixth.fodder.core.buildings.Building;
+import com.sixth.fodder.core.RoadGenerator;
+import com.sixth.fodder.core.cell.Cell;
 import com.sixth.fodder.graphics.CellActor;
 import com.sixth.fodder.graphics.Fodder;
 
@@ -21,36 +21,19 @@ import com.sixth.fodder.graphics.Fodder;
  */
 public class GameScreen implements Screen
 {
-        final Fodder game;
-        private final Stage stage;
-        private final OrthographicCamera camera;
+        private final Cell[][] cells;
         
-        private final Building[] buildings;
-//        private final RoadGenerator roadGen;
-//        private final Cell[][] cells;
+        private Stage stage;
 	
-	public GameScreen(final Fodder game) 
+	public GameScreen() 
         {
-                this.game = game;  
-                camera = new OrthographicCamera(RoadGenerator.getNumOfCells() * Cell.getSizeInPix(), 
-                        
+            this.stage = Fodder.getStage();
                 
-                stage = new Stage(new ScreenViewport, game.batch);
+            cells = new RoadGenerator().getCells();
                 
-                buildings = new Building[3];
-                for (int i = 0; i < 3; i++)
-                {
-                    buildings[i] = new Building();
-                }
-
-//                roadGen = new RoadGenerator();
-//                roadGen.placeBuildings(buildings);
-//                
-//                cells = RoadGenerator.getCells();
-                
-                for (int i = 0; i < RoadGenerator.getNumOfCells(); ++i)
-                    for (int j = 0; j < RoadGenerator.getNumOfCells(); ++j)
-                        stage.addActor(cells[i][j].getActor());
+            for (int i = 0; i < RoadGenerator.getNumOfCells(); ++i)
+                for (int j = 0; j < RoadGenerator.getNumOfCells(); ++j)
+                    stage.addActor(cells[i][j].getActor());
         }
         
 	@Override
@@ -59,14 +42,22 @@ public class GameScreen implements Screen
 //                camera.update();
 //                game.batch.setProjectionMatrix(camera.combined);
                 
-                stage.draw();
-                stage.act(Gdx.graphics.getDeltaTime());
+//                stage.draw();
+//                stage.act(Gdx.graphics.getDeltaTime());
                 
-                if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE))
-                {
-                    Gdx.app.exit();
-                    dispose();
-                }
+            //----------------------------------------------------------- 
+                
+            Gdx.gl.glClearColor(0.8f, 0.7f, 0.5f, 1);
+            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+            
+            stage.act();
+            stage.draw();
+                
+            if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE))
+            {
+                Gdx.app.exit();
+                dispose();
+            }
 	}
 
 	@Override
@@ -88,11 +79,11 @@ public class GameScreen implements Screen
 	public void resume() {}
 
 	@Override
-	public void dispose() {
-		game.dispose();
-                stage.dispose();
-                CellActor.getBackCellsAtlas().dispose();
-                CellActor.getBuildingsAtlas().dispose();
-                CellActor.getRoadsAtlas().dispose();
+	public void dispose() 
+        {
+            stage.dispose();
+            CellActor.getBackCellsAtlas().dispose();
+            CellActor.getBuildingsAtlas().dispose();
+            CellActor.getRoadsAtlas().dispose();
 	}
 }
