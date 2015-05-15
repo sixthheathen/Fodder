@@ -116,28 +116,28 @@ public class RoadCell extends Cell
     public void setUpRoad(Boolean bool)
     {
         this.upRoad = bool;
-        if (bool && !((RoadCell)super.getUp().getCell()).hasDownRoad())
-            ((RoadCell)super.getUp().getCell()).setDownRoad(bool);
+      if (bool && !(((RoadCell)(super.getUp())).hasDownRoad()))
+            ((RoadCell)super.getUp()).setDownRoad(bool);
     }
 
     public void setDownRoad(Boolean bool)
     {
         this.downRoad = bool;
-        if (bool && !((RoadCell)super.getDown().getCell()).hasUpRoad())
-            ((RoadCell)super.getDown().getCell()).setUpRoad(bool);
+        if (bool && !((RoadCell)super.getDown()).hasUpRoad())
+            ((RoadCell)super.getDown()).setUpRoad(bool);
     }
 
     public void setLeftRoad(Boolean bool)
     {
         this.leftRoad = bool;
-        if (bool && !((RoadCell)super.getDown().getCell()).hasRightRoad())
-            ((RoadCell)super.getLeft().getCell()).setRightRoad(bool);
+        if (bool && !((RoadCell)super.getDown()).hasRightRoad())
+            ((RoadCell)super.getLeft()).setRightRoad(bool);
     }
 
     public void setRightRoad(Boolean bool)
     {
         this.rightRoad = bool;
-        if (bool && ((RoadCell)super.getRight().getCell()).hasLeftRoad())
-            ((RoadCell)super.getRight().getCell()).setLeftRoad(bool);
+        if (bool && ((RoadCell)super.getRight()).hasLeftRoad())
+            ((RoadCell)super.getRight()).setLeftRoad(bool);
     }
 }

@@ -19,10 +19,10 @@ public abstract class Cell
     private final int x;
     private final int y;
     
-    private final Direction up;
-    private final Direction down;
-    private final Direction left;
-    private final Direction right;
+    private Cell up;
+    private Cell down;
+    private Cell left;
+    private Cell right;
     
     private final CellActor actor;
     
@@ -33,17 +33,34 @@ public abstract class Cell
         this.x = x;
         this.y = y;
         
-        up = new Direction(x != 0);
-        down = new Direction(x != (RoadGenerator.getNumOfCells() - 1));
-        left = new Direction(y != 0);
-        right = new Direction(y != (RoadGenerator.getNumOfCells() - 1));
-        
         actor = new CellActor();
         actor.setSize(sizeInPix, sizeInPix);
         actor.setPosition(y * sizeInPix, (RoadGenerator.getNumOfCells() - x - 1) * sizeInPix);
     }
     
     public abstract void setTexture();
+    
+    // mutators
+    
+    public void setUp(Cell up)
+    {
+        this.up = up;
+    }
+
+    public void setDown(Cell down)
+    {
+        this.down = down;
+    }
+    
+    public void setLeft(Cell left)
+    {
+        this.left = left;
+    }
+    
+    public void setRight(Cell right)
+    {
+        this.right = right;
+    }
     
     // accessors
     
@@ -57,23 +74,43 @@ public abstract class Cell
         return sizeInPix;
     }
 
-    public Direction getUp()
+    public Cell getUp()
     {
         return up;
     }
 
-    public Direction getDown()
+    public Cell getDown()
     {
         return down;
     }
 
-    public Direction getLeft()
+    public Cell getLeft()
     {
         return left;
     }
 
-    public Direction getRight()
+    public Cell getRight()
     {
         return right;
+    }
+    
+    public Boolean upAvail()
+    {
+        return (up != null);
+    }
+    
+    public Boolean downAvail()
+    {
+        return (down != null);
+    }
+    
+    public Boolean leftAvail()
+    {
+        return (left != null);
+    }
+    
+    public Boolean rightAvail()
+    {
+        return (right != null);
     }
 }
