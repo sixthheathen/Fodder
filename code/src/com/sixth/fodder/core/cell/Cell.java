@@ -42,29 +42,29 @@ public abstract class Cell
     
     // mutators
     
-    public void setUp(Cell up)
+    public void setUpCell(Cell up)
     {
         this.up = up;
     }
 
-    public void setDown(Cell down)
+    public void setDownCell(Cell down)
     {
         this.down = down;
     }
     
-    public void setLeft(Cell left)
+    public void setLeftCell(Cell left)
     {
         this.left = left;
     }
     
-    public void setRight(Cell right)
+    public void setRightCell(Cell right)
     {
         this.right = right;
     }
     
     // accessors
     
-    public CellActor getActor ()
+    public CellActor getActor()
     {
         return actor;
     }
@@ -74,43 +74,43 @@ public abstract class Cell
         return sizeInPix;
     }
 
-    public Cell getUp()
+    public Cell getUpCell()
     {
         return up;
     }
 
-    public Cell getDown()
+    public Cell getDownCell()
     {
         return down;
     }
 
-    public Cell getLeft()
+    public Cell getLeftCell()
     {
         return left;
     }
 
-    public Cell getRight()
+    public Cell getRightCell()
     {
         return right;
     }
     
     public Boolean upAvail()
     {
-        return (up != null);
+        return (x != 0);
     }
     
     public Boolean downAvail()
     {
-        return (down != null);
+        return (x != (RoadGenerator.getNumOfCells() - 1));
     }
     
     public Boolean leftAvail()
     {
-        return (left != null);
+        return (y != 0);
     }
     
     public Boolean rightAvail()
     {
-        return (right != null);
+        return (y != (RoadGenerator.getNumOfCells() - 1));
     }
 }

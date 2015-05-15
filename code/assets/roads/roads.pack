@@ -17,7 +17,7 @@ dlrRoad
   orig: 32, 32
   offset: 0, 0
   index: -1
-dRoad
+uRoad
   rotate: false
   xy: 70, 2
   size: 32, 32
@@ -31,7 +31,7 @@ drRoad
   orig: 32, 32
   offset: 0, 0
   index: -1
-lRoad
+rRoad
   rotate: false
   xy: 138, 2
   size: 32, 32
@@ -45,7 +45,7 @@ lrRoad
   orig: 32, 32
   offset: 0, 0
   index: -1
-rRoad
+lRoad
   rotate: false
   xy: 206, 2
   size: 32, 32
@@ -94,7 +94,7 @@ ulrRoad
   orig: 32, 32
   offset: 0, 0
   index: -1
-uRoad
+dRoad
   rotate: false
   xy: 444, 2
   size: 32, 32
