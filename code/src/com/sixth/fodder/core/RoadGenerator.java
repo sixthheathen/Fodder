@@ -17,8 +17,8 @@ import java.util.Random;
  */
 public class RoadGenerator 
 {
-    private static final int mapWidth = 100;
-    private static final int mapHeight = 64;
+    private static final int mapWidth = 200;
+    private static final int mapHeight = 40;
     private static final Random random = new Random();
     
     private static Cell[][] cells;

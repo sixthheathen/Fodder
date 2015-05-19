@@ -59,8 +59,8 @@ public class Fodder extends Game
         final ScalingViewport view;
 
         view = new ScalingViewport(
-          Scaling.fit,
-          RoadGenerator.getMapWidth() * Cell.getSizeInPix(),
+          Scaling.none,
+          RoadGenerator.getMapWidth() * Cell.getSizeInPix(), 
           RoadGenerator.getMapHeight() * Cell.getSizeInPix(),
           game.camera
         );
