@@ -6,7 +6,6 @@
 package com.sixth.fodder.core.cell;
 
 import com.sixth.fodder.core.buildings.Building;
-import com.sixth.fodder.core.buildings.House;
 import com.sixth.fodder.graphics.atlasses.Buildings;
 
 /**
@@ -15,7 +14,7 @@ import com.sixth.fodder.graphics.atlasses.Buildings;
  */
 public class BuildingCell extends Cell
 {
-    private Building building;
+    private Building building = null;
 
     public BuildingCell (int x, int y, Building building)
     {
@@ -29,7 +28,7 @@ public class BuildingCell extends Cell
     {
         super.getActor().setTexture(Buildings.valueOf(building.getName()).getTexture());
     }
-
+    
     public Boolean hasBuilding()
     {
         return (building != null);

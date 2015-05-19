@@ -24,6 +24,7 @@ public class RoadCell extends Cell
 //        rightRoad = (y != (RoadGenerator.getNumOfCells() - 1));
         
         upRoad = downRoad = leftRoad = rightRoad = false;
+        upRoad = true;
         
         setTexture();
     }
@@ -121,28 +122,28 @@ public class RoadCell extends Cell
     public void setUpRoad(Boolean bool)
     {
         this.upRoad = bool;
-        if (bool && !(((RoadCell)(super.getUpCell())).hasDownRoad()))
-            ((RoadCell)(super.getUpCell())).setDownRoad(bool);
+//        if (bool && !(((RoadCell)(super.getUpCell())).hasDownRoad()))
+//            ((RoadCell)(super.getUpCell())).setDownRoad(bool);
     }
 
     public void setDownRoad(Boolean bool)
     {
         this.downRoad = bool;
-        if (bool && !(((RoadCell)super.getDownCell())).hasUpRoad())
-            ((RoadCell)(super.getDownCell())).setUpRoad(bool);
+//        if (bool && !(((RoadCell)super.getDownCell())).hasUpRoad())
+//            ((RoadCell)(super.getDownCell())).setUpRoad(bool);
     }
 
     public void setLeftRoad(Boolean bool)
     {
         this.leftRoad = bool;
-        if (bool && !(((RoadCell)super.getLeftCell())).hasRightRoad())
-            ((RoadCell)(super.getLeftCell())).setRightRoad(bool);
+//        if (bool && !(((RoadCell)super.getLeftCell())).hasRightRoad())
+//            ((RoadCell)(super.getLeftCell())).setRightRoad(bool);
     }
 
     public void setRightRoad(Boolean bool)
     {
         this.rightRoad = bool;
-        if (bool && !(((RoadCell)super.getRightCell())).hasLeftRoad())
-            ((RoadCell)(super.getRightCell())).setLeftRoad(bool);
+//        if (bool && !(((RoadCell)super.getRightCell())).hasLeftRoad())
+//            ((RoadCell)(super.getRightCell())).setLeftRoad(bool);
     }
 }

@@ -6,6 +6,7 @@
 package com.sixth.fodder.core.cell;
 
 import com.sixth.fodder.core.RoadGenerator;
+import com.sixth.fodder.core.buildings.House;
 import com.sixth.fodder.graphics.CellActor;
 
 /**
@@ -26,8 +27,6 @@ public abstract class Cell
     
     private final CellActor actor;
     
-    private Boolean checked;;
-        
     public Cell(int x, int y)
     {
         this.x = x;
@@ -39,6 +38,32 @@ public abstract class Cell
     }
     
     public abstract void setTexture();
+    
+    public void create(int typeId, Cell cell)
+    {
+        switch (typeId)
+        {
+            case 0:
+            {
+                cell = new BackCell(cell.x, cell.y);
+                break;
+            }
+            case 1:
+            {
+                cell = new BuildingCell(cell.x, cell.y, new House());
+                break;
+            }
+            case 2:
+            {
+                cell = new RoadCell(cell.x, cell.y);
+                break;
+            }
+            default:
+            {
+                //this is never gonna happen
+            }
+        }
+    }
     
     // mutators
     

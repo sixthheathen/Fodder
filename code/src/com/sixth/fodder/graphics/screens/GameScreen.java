@@ -14,6 +14,7 @@ import com.sixth.fodder.core.RoadGenerator;
 import com.sixth.fodder.core.cell.Cell;
 import com.sixth.fodder.graphics.CellActor;
 import com.sixth.fodder.graphics.Fodder;
+import static demogen.DemoGen.generate;
 
 /**
  *
@@ -21,19 +22,21 @@ import com.sixth.fodder.graphics.Fodder;
  */
 public class GameScreen implements Screen
 {
-        private final Cell[][] cells;
+        private Cell[][] cells;
         
         private Stage stage;
 	
 	public GameScreen() 
         {
             this.stage = Fodder.getStage();
-                
+            
+            byte [][] map = generate (RoadGenerator.getNumOfCells(),  RoadGenerator.getNumOfCells(), 1, 1.4f, 0.3f);
+            
             cells = new RoadGenerator().getCells();
                 
             for (int i = 0; i < RoadGenerator.getNumOfCells(); ++i)
                 for (int j = 0; j < RoadGenerator.getNumOfCells(); ++j)
-                    stage.addActor(cells[i][j].getActor());
+                    stage.addActor(cells[i][j].getActor());    
         }
         
 	@Override
