@@ -163,8 +163,7 @@ public class Feodor {
             }
             case DOWN: 
             {
-            int numOfCells;
-                if ((y + 1) >= RoadGenerator.getNumOfCells()) return false;
+                if ((y + 1) >= RoadGenerator.getMapWidth()) return false;
                 break;
             }
             case LEFT: 
@@ -174,7 +173,7 @@ public class Feodor {
             }
             case RIGHT: 
             {
-                if ((x + 1) >= RoadGenerator.getNumOfCells()) return false;
+                if ((x + 1) >= RoadGenerator.getMapHeight()) return false;
                 break;
             }
         }

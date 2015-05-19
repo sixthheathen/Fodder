@@ -34,7 +34,7 @@ public abstract class Cell
         
         actor = new CellActor();
         actor.setSize(sizeInPix, sizeInPix);
-        actor.setPosition(y * sizeInPix, (RoadGenerator.getNumOfCells() - x - 1) * sizeInPix);
+        actor.setPosition(y * sizeInPix, (RoadGenerator.getMapHeight() - x - 1) * sizeInPix);
     }
     
     public abstract void setTexture();
@@ -126,7 +126,7 @@ public abstract class Cell
     
     public Boolean downAvail()
     {
-        return (x != (RoadGenerator.getNumOfCells() - 1));
+        return (x != (RoadGenerator.getMapHeight() - 1));
     }
     
     public Boolean leftAvail()
@@ -136,6 +136,6 @@ public abstract class Cell
     
     public Boolean rightAvail()
     {
-        return (y != (RoadGenerator.getNumOfCells() - 1));
+        return (y != (RoadGenerator.getMapWidth() - 1));
     }
 }

@@ -33,9 +33,9 @@ public class Fodder extends Game
     public void create() 
     {
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 
-                          RoadGenerator.getNumOfCells() * Cell.getSizeInPix(), 
-                          RoadGenerator.getNumOfCells() * Cell.getSizeInPix());
+        camera.setToOrtho(false,
+                          RoadGenerator.getMapWidth() * Cell.getSizeInPix(), 
+                          RoadGenerator.getMapHeight() * Cell.getSizeInPix());
         camera.update();
         
         this.setScreen(new GameScreen());
@@ -60,8 +60,8 @@ public class Fodder extends Game
 
         view = new ScalingViewport(
           Scaling.fit,
-          RoadGenerator.getNumOfCells() * Cell.getSizeInPix(),
-          RoadGenerator.getNumOfCells() * Cell.getSizeInPix(),
+          RoadGenerator.getMapWidth() * Cell.getSizeInPix(),
+          RoadGenerator.getMapHeight() * Cell.getSizeInPix(),
           game.camera
         );
         

@@ -30,12 +30,10 @@ public class GameScreen implements Screen
         {
             this.stage = Fodder.getStage();
             
-            byte [][] map = generate (RoadGenerator.getNumOfCells(),  RoadGenerator.getNumOfCells(), 1, 1.4f, 0.3f);
-            
             cells = new RoadGenerator().getCells();
                 
-            for (int i = 0; i < RoadGenerator.getNumOfCells(); ++i)
-                for (int j = 0; j < RoadGenerator.getNumOfCells(); ++j)
+            for (int i = 0; i < RoadGenerator.getMapHeight(); ++i)
+                for (int j = 0; j < RoadGenerator.getMapWidth(); ++j)
                     stage.addActor(cells[i][j].getActor());    
         }
         
