@@ -52,6 +52,7 @@ public class Occupation
         timeTill = (random.nextInt(3) + 17) * 60 * 60; // work finishes between 5 PM and 8 PM
         salary = random.nextInt(4000) + 1000;
         this.id = random.nextInt(Building.getNextId());
+        
     }
     
     public String getJob () 

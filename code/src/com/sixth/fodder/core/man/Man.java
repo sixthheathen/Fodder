@@ -24,6 +24,7 @@ public class Man
     private final int id;
     private static int nextId;
     private final boolean male;
+    private final byte[] houseCoord = new byte[2];
 //    private final int houseId;
     
     public Man ()

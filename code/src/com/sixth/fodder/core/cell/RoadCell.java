@@ -1,7 +1,7 @@
-
 package com.sixth.fodder.core.cell;
 
 import com.sixth.fodder.graphics.atlasses.*;
+import static demogen.Constants.Type.*;
 
 /**
  *
@@ -9,127 +9,108 @@ import com.sixth.fodder.graphics.atlasses.*;
  */
 public class RoadCell extends Cell
 {
-    private Boolean upRoad;
-    private Boolean downRoad;
-    private Boolean leftRoad;
-    private Boolean rightRoad;
-    
-    public RoadCell (int x, int y)
+    private final boolean[] dirs;
+
+    public RoadCell(int x, int y, byte type)
     {
         super(x, y);
-        
-        upRoad = downRoad = leftRoad = rightRoad = false;
-        
-        setTexture();
+        dirs = new boolean[4];
+        getTypeById(type).fillMask(dirs);
     }
-    
+
     @Override
     public void setTexture()
     {
-        if (upRoad)
-            if (downRoad)
-                if (leftRoad)
-                    if (rightRoad)
-                        super.getActor().setTexture(Roads.valueOf("udlrRoad").getTexture());
-                    else
-                        super.getActor().setTexture(Roads.valueOf("udlRoad").getTexture());
-                else 
-                {
-                    if (rightRoad)
-                        super.getActor().setTexture(Roads.valueOf("udrRoad").getTexture());
-                    else 
-                        super.getActor().setTexture(Roads.valueOf("udRoad").getTexture());
-                }
-            else 
-            {
-                if (leftRoad)
-                    if (rightRoad)
-                        super.getActor().setTexture(Roads.valueOf("ulrRoad").getTexture());
-                    else
-                        super.getActor().setTexture(Roads.valueOf("ulRoad").getTexture());
-                else 
-                {
-                    if (rightRoad)
-                        super.getActor().setTexture(Roads.valueOf("urRoad").getTexture());
-                    else 
-                        super.getActor().setTexture(Roads.valueOf("uRoad").getTexture());
-                }
-            }
-        else
+        byte currType = getTypeByDirections(dirs).getId();
+        switch (currType)
         {
-            if (downRoad)
-                if (leftRoad)
-                    if (rightRoad)
-                        super.getActor().setTexture(Roads.valueOf("dlrRoad").getTexture());
-                    else
-                        super.getActor().setTexture(Roads.valueOf("dlRoad").getTexture());
-                else 
-                {
-                    if (rightRoad)
-                        super.getActor().setTexture(Roads.valueOf("drRoad").getTexture());
-                    else 
-                        super.getActor().setTexture(Roads.valueOf("dRoad").getTexture());
-                }
-            else 
-            {
-                if (leftRoad)
-                    if (rightRoad)
-                        super.getActor().setTexture(Roads.valueOf("lrRoad").getTexture());
-                    else
-                        super.getActor().setTexture(Roads.valueOf("lRoad").getTexture());
-                else 
-                {
-                    if (rightRoad)
-                        super.getActor().setTexture(Roads.valueOf("rRoad").getTexture());
-                    else 
-                        super.getActor().setTexture(BackCells.valueOf("voidCell").getTexture());
-                }
-            }
+            case 1:
+                super.getActor().setTexture(Roads.valueOf("rRoad").getTexture());
+                break;
+            case 2:
+                super.getActor().setTexture(Roads.valueOf("lRoad").getTexture());
+                break;
+            case 3:
+                super.getActor().setTexture(Roads.valueOf("lrRoad").getTexture());
+                break;
+            case 4:
+                super.getActor().setTexture(Roads.valueOf("dRoad").getTexture());
+                break;
+            case 5:
+                super.getActor().setTexture(Roads.valueOf("drRoad").getTexture());
+                break;
+            case 6:
+                super.getActor().setTexture(Roads.valueOf("dlRoad").getTexture());
+                break;
+            case 7:
+                super.getActor().setTexture(Roads.valueOf("dlrRoad").getTexture());
+                break;
+            case 8:
+                super.getActor().setTexture(Roads.valueOf("uRoad").getTexture());
+                break;
+            case 9:
+                super.getActor().setTexture(Roads.valueOf("urRoad").getTexture());
+                break;
+            case 10:
+                super.getActor().setTexture(Roads.valueOf("ulRoad").getTexture());
+                break;
+            case 11:
+                super.getActor().setTexture(Roads.valueOf("ulrRoad").getTexture());
+                break;
+            case 12:
+                super.getActor().setTexture(Roads.valueOf("udRoad").getTexture());
+                break;
+            case 13:
+                super.getActor().setTexture(Roads.valueOf("udrRoad").getTexture());
+                break;
+            case 14:
+                super.getActor().setTexture(Roads.valueOf("udlRoad").getTexture());
+                break;
+            case 15:
+                super.getActor().setTexture(Roads.valueOf("udlrRoad").getTexture());
+                break;
+            default:
+                System.out.println("ftw?!");
         }
     }
 
-    public Boolean hasUpRoad()
+    public boolean hasUpRoad()
     {
-        return upRoad;
-    }
-
-    public Boolean hasDownRoad()
-    {
-        return downRoad;
-    }
-
-    public Boolean hasLeftRoad()
-    {
-        return leftRoad;
-    }
-
-    public Boolean hasRightRoad()
-    {
-        return rightRoad;
+        return dirs[0];
     }
     
-    public Boolean hasAllRoads()
+    public boolean hasDownRoad()
     {
-        return (upRoad && downRoad && leftRoad && rightRoad);
+        return dirs[1];
     }
-
-    public void setUpRoad(Boolean bool)
+    
+    public boolean hasLeftRoad()
     {
-        this.upRoad = bool;
+        return dirs[2];
     }
-
-    public void setDownRoad(Boolean bool)
+    
+    public boolean hasRightRoad()
     {
-        this.downRoad = bool;
+        return dirs[3];
     }
-
-    public void setLeftRoad(Boolean bool)
+    
+    public void setUpRoad(boolean val)
     {
-        this.leftRoad = bool;
+        dirs[0] = val;
     }
-
-    public void setRightRoad(Boolean bool)
+    
+    public void setDownRoad(boolean val)
     {
-        this.rightRoad = bool;
+        dirs[1] = val;
+    }
+    
+    public void setLeftRoad(boolean val)
+    {
+        dirs[2] = val;
+    }
+    
+    public void setRightRoad(boolean val)
+    {
+        dirs[3] = val;
     }
 }

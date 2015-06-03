@@ -12,13 +12,14 @@ package demogen;
 public class Constants {
     
     enum Direction {
-        UP (true,false,false,false,    false,true,false,false),
-        DOWN(false,true,false,false,    true,false,false,false),
-        LEFT(false,false,true,false,    false,false,false,true),
-        RIGHT(false,false,false,true,    false,false,true,false);
+        UP (true,false,false,false,    false,true,false,false, (byte)8),
+        DOWN(false,true,false,false,    true,false,false,false, (byte)4),
+        LEFT(false,false,true,false,    false,false,false,true, (byte)2),
+        RIGHT(false,false,false,true,    false,false,true,false, (byte)1);
         
         final boolean [] cur_mask;
         final boolean [] new_mask;
+        final byte val;
         
         Direction(
                   boolean cur_up, 
@@ -28,7 +29,8 @@ public class Constants {
                   boolean new_up, 
                   boolean new_down, 
                   boolean new_left, 
-                  boolean new_right) 
+                  boolean new_right,
+                  byte val) 
         {
             cur_mask = new  boolean[4];
             new_mask = new  boolean[4];
@@ -42,6 +44,8 @@ public class Constants {
             new_mask[1] = new_down;
             new_mask[2] = new_left;
             new_mask[3] = new_right;   
+            
+            this.val = val;
         }
         
         public void applyCurMask (boolean [] mask)
@@ -65,35 +69,38 @@ public class Constants {
                 }
             }
         }
-        
-        
+
+        public byte getVal()
+        {
+            return val;
+        }
     }
     
     public enum Type 
     {
         NONE (false, false, false, false, (byte)0,' '),//0
         
-        ROAD_LR(false, false, true, true, (byte)1,'═'), //1
-        ROAD_UD(true, true, false, false, (byte)2,'║'), //2
+        ROAD_LR(false, false, true, true, (byte)3,'═'), //1 // 3
+        ROAD_UD(true, true, false, false, (byte)12,'║'), //2 // 12
         
-        TURN_UL(true, false, true, false, (byte)3,'╝'), //3
-        TURN_UR(true, false, false, true, (byte)4,'╚'), //4
-        TURN_DL(false, true, true, false, (byte)5,'╗'), //5
-        TURN_DR(false, true, false, true, (byte)6,'╔'), //6
+        TURN_UL(true, false, true, false, (byte)10,'╝'), //3 // 10
+        TURN_UR(true, false, false, true, (byte)9,'╚'), //4 // 9
+        TURN_DL(false, true, true, false, (byte)6,'╗'), //5 // 6
+        TURN_DR(false, true, false, true, (byte)5,'╔'), //6 // 5
 
-        CROSS_UL(true, true, true, false, (byte)7,'╣'), //7
-        CROSS_UR(true, true, false, true, (byte)8,'╠'), //8
+        CROSS_UL(true, true, true, false, (byte)14,'╣'), //7 // 14
+        CROSS_UR(true, true, false, true, (byte)13,'╠'), //8 // 13
        
-        CROSS_LU(true, false, true, true, (byte)9,'╩'), //9
-        CROSS_RD(false, true, true, true, (byte)10,'╦'), //10
+        CROSS_LU(true, false, true, true, (byte)11,'╩'), //9 // 11
+        CROSS_RD(false, true, true, true, (byte)7,'╦'), //10 // 7
         
-        JUNKTION(true, true, true, true, (byte)11,'╬'),  //11
+        JUNKTION(true, true, true, true, (byte)15,'╬'),  //11 // 15
         
-        DEAD_L(false, false, true, false, (byte)12,'┤'), //9
-        DEAD_R(false, false, false, true, (byte)13,'├'), //10
+        DEAD_L(false, false, true, false, (byte)2,'┤'), //9 // 2
+        DEAD_R(false, false, false, true, (byte)1,'├'), //10 //1
         
-        DEAD_U(true, false, false, false, (byte)14,'┴'), //9
-        DEAD_D(false, true, false, false, (byte)15,'┬'); //10
+        DEAD_U(true, false, false, false, (byte)8,'┴'), //9 // 8
+        DEAD_D(false, true, false, false, (byte)4,'┬'); //10 // 4
         
         public final boolean up;
         public final boolean down;
@@ -113,7 +120,12 @@ public class Constants {
         
         public static Type getTypeById (byte id)
         {
-            return Type.values()[id];
+            for (Type t : Type.values())
+            {
+                if (t.id == id)
+                    return t;
+            }
+            return null;
         }
         
         public static Type getTypeByDirections (boolean mask[])

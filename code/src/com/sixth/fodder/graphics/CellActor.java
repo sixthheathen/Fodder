@@ -17,6 +17,7 @@ public class CellActor extends Actor
     private static final TextureAtlas backCellsAtlas = new TextureAtlas(Gdx.files.internal("assets/backCells/backCells.pack"));
     private static final TextureAtlas buildingsAtlas = new TextureAtlas(Gdx.files.internal("assets/buildings/buildings.pack"));
     private static final TextureAtlas roadsAtlas = new TextureAtlas(Gdx.files.internal("assets/roads/roads.pack"));
+    private static final TextureAtlas peopleAtlas = new TextureAtlas(Gdx.files.internal("assets/people/people.pack"));
 
     private TextureRegion texture;
     
@@ -43,10 +44,20 @@ public class CellActor extends Actor
         return roadsAtlas;
     }
     
+    public static TextureAtlas getPeopleAtlas()
+    {
+        return peopleAtlas;
+    }
+    
     
 
     public void setTexture(TextureRegion texture)
     {
         this.texture = texture;
-    }                                 
+    }         
+    
+    public TextureRegion getTexture()
+    {
+        return texture;
+    }
 }

@@ -13,36 +13,36 @@ import java.util.Random;
  *
  * @author pagan
  */
-public class Feodor {
-    
+public class Feodor 
+{
     Random brainDamage = new Random(System.currentTimeMillis());
     byte [][] map;
     int x;
     int y;
     
-    int shortesRoad;
+    int shortestRoad;
     int maxRoadLength;
     float fearfulness;
 
-    public Feodor (byte[][] map, int x, int y, int shortesRoad, float fearfulness)
+    public Feodor (byte[][] map, int x, int y, int shortestRoad, float fearfulness)
     {
         this.x = x;
         this.y = y;
         this.map = map;
-        this.shortesRoad = shortesRoad;
+        this.shortestRoad = shortestRoad;
         int size = x;
-        maxRoadLength = size - shortesRoad;
+        maxRoadLength = size - shortestRoad;
         maxRoadLength = (int) (1 + (maxRoadLength) * fearfulness);
     }
 
     
     
-    void doTheJob(int steps_to_pass) {
-        
+    void doTheJob(int steps_to_pass) 
+    {
         int stepsLeft = steps_to_pass;
         while (stepsLeft != 0)
         {
-            int planned_road_size = shortesRoad + brainDamage.nextInt(maxRoadLength);
+            int planned_road_size = shortestRoad + brainDamage.nextInt(maxRoadLength);
             
             if (stepsLeft - planned_road_size < 0)
             {
@@ -53,7 +53,6 @@ public class Feodor {
             Direction master_directrion = Direction.values()[direction];
         
             int done = trace(planned_road_size, master_directrion);
-            
             
             stepsLeft -= done;
         }
@@ -92,36 +91,36 @@ public class Feodor {
         }
     }
     
-    private int nextCoordX (Direction dir)
+    private int nextCoordY (Direction dir)
     {
         switch (dir)
         {
             case LEFT: 
             {
-                return x - 1;
-            }
-            case RIGHT: 
-            {
-                return x + 1;
-            }
-        }
-        return x;
-    }
-    
-    private int nextCoordY (Direction dir)
-    {
-        switch (dir)
-        {
-            case UP: 
-            {
                 return y - 1;
             }
-            case DOWN: 
+            case RIGHT: 
             {
                 return y + 1;
             }
         }
         return y;
+    }
+    
+    private int nextCoordX (Direction dir)
+    {
+        switch (dir)
+        {
+            case UP: 
+            {
+                return x - 1;
+            }
+            case DOWN: 
+            {
+                return x + 1;
+            }
+        }
+        return x;
     }
     
     private void build (Direction dir)
@@ -158,22 +157,22 @@ public class Feodor {
         {
             case UP: 
             {
-                if ((y - 1) < 0) return false;
+                if ((x - 1) < 0) return false;
                 break;
             }
             case DOWN: 
             {
-                if ((y + 1) >= RoadGenerator.getMapWidth()) return false;
+                if ((x + 1) >= RoadGenerator.getMapHeight()) return false;
                 break;
             }
             case LEFT: 
             {
-                if ((x - 1) < 0) return false;
+                if ((y - 1) < 0) return false;
                 break;
             }
             case RIGHT: 
             {
-                if ((x + 1) >= RoadGenerator.getMapHeight()) return false;
+                if ((y + 1) >= RoadGenerator.getMapWidth()) return false;
                 break;
             }
         }

@@ -40,5 +40,5 @@ public enum Roads
     public TextureRegion getTexture() 
     {
         return texture;
-    }
+    } 
 }
