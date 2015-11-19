@@ -11,6 +11,7 @@ import java.util.ArrayList;
 /**
  *
  * @author sixth
+ * oh my god how long has it been since I last visited this place
  */
 public class GraphAnalyser
 {
